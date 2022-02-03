@@ -4,7 +4,7 @@
     <router-link to="/home">home</router-link>&nbsp&nbsp
     <router-link to="/login">login</router-link>
     <br />
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <HelloWorld />
     <h1>A vue3 cli made by coisini</h1>
     <h3>{{ index.count }}</h3>
     <button @click="index.increment">+</button>
@@ -14,6 +14,7 @@
 
 <script setup lang="ts">
 import { indexStore } from "@/store/index";
+import HelloWorld from "@/components/HelloWorld.vue";
 const index = indexStore();
 </script>
 
