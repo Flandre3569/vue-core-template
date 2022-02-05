@@ -33,13 +33,19 @@
     │
     ├─pages
     │  ├─home
-    │  │      home.vue
+    │  │      index.vue
+    │  │      router.ts
+    │  │      type.ts
     │  │
     │  ├─login
-    │  │      login.vue
+    │  │      index.vue
+    │  │      router.ts
+    │  │      type.ts
     │  │
-    │  └─not-found
-    │          not-found.vue
+    │  └─notfound
+    │          index.vue
+    │          router.ts
+    │          type.ts
     │
     ├─router
     │      index.ts
@@ -48,12 +54,21 @@
     │      index.ts
     │
     ├─store
-    │      home.ts
-    │      index.ts
-    │      login.ts
+    │  ├─home
+    │  │      home.ts
+    │  │      type.ts
+    │  │
+    │  ├─index
+    │  │      index.ts
+    │  │      type.ts
+    │  │
+    │  └─login
+    │          login.ts
+    │          type.ts
     │
     └─utils
-            Cache.js
+            Cache.ts
+            firstUpperCase.ts
 ```
 
 ## 模板包含：
@@ -69,6 +84,7 @@
 - 浏览器适配范围
 - 路由守卫(可选)
 - 404拦截
+- 根据pages目录动态添加路由
 
 ## 设计目的：
 作为自主开发脚手架的vue3模板
