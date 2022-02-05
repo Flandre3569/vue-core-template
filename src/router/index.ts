@@ -1,20 +1,27 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { firstUpperCase } from "@/utils/firstUpperCase";
 
-const routes: RouteRecordRaw[] = [
-  {
-    path: "/home",
-    component: () => import("@/pages/home/home.vue"),
-  },
-  {
-    path: "/login",
-    component: () => import("@/pages/login/login.vue"),
-  },
-  {
-    path: "/:pathMatch(.*)*",
-    name: "not-found",
-    component: () => import("@/pages/not-found/not-found.vue"),
-  },
-];
+const pages = import.meta.globEager("../pages/**/index.vue");
+const routerFiles = [];
+for (const path in pages) {
+  const cpnPath = path.replace("../pages", "").replace("/index.vue", "");
+  const cpnDir = path.replace("../pages/", "").replace("/index.vue", "");
+  const firstUpper = firstUpperCase(cpnDir);
+  const component = {
+    path: cpnPath,
+    name: firstUpper,
+    component: () => import(/* @vite-ignore */ path),
+  };
+  routerFiles.push(component);
+}
+
+routerFiles.push({
+  path: "/:pathMatch(.*)*",
+  name: "notfound",
+  component: import("@/pages/notfound/index.vue"),
+});
+
+const routes: RouteRecordRaw[] = routerFiles;
 
 const router = createRouter({
   routes,

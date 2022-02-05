@@ -16,6 +16,13 @@
 import { indexStore } from "@/store/index";
 import HelloWorld from "@/components/HelloWorld.vue";
 const index = indexStore();
+
+const modules = import.meta.glob("./pages/*.ts");
+for (const path in modules) {
+  modules[path]().then((mod) => {
+    console.log(path, mod);
+  });
+}
 </script>
 
 <style>
