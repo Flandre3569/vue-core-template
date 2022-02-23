@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let BASE_URL = "/api";
+let BASE_URL = "";
 const TIME_OUT = 10000;
 // 环境
 const REPORTER_HOST = import.meta.env.MODE;
@@ -12,3 +12,5 @@ if (REPORTER_HOST === "development") {
 } else {
   BASE_URL = "/api";
 }
+
+export { BASE_URL, TIME_OUT };
